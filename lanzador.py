@@ -1,6 +1,10 @@
 from ejercicio_Huffman import *
+from ejercicio_pokemon import Pokemon
 from codigo_base.arboles import *
+from random import choice
+from codigo_base.cola import Cola, arribo, atencion, cola_vacia
 from introducir import solicitar_introducir_numero_extremo
+import csv
 
 def ejecutar():
     #ej1
@@ -49,4 +53,21 @@ def ejecutar():
                 break
         print("Decodificando...")
         print("Cadena decodificada: ", decodificar(cadena, bosque[0]))
-ejecutar()
+    #ej2   
+    elif ej == 2:
+        with open("Pokemon.csv", 'rb') as f:
+            reader = csv.reader(f)
+            nombre = [row[1] for row in reader]
+            id = [row[0] for row in reader]
+        arbol_nombres = None
+        arbol_tipo = None
+        arbol_numero = None
+        tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
+        debil = []
+
+        #apartado a
+        for i in range (0, len(nombre)):
+            pokemon = Pokemon(nombre[i], id[i], choice(tipo), choice(debil))
+            arbol_nombres = insertar_nodo(arbol_nombres, [pokemon, pokemon.nombre])
+            arbol_tipo = insertar_nodo(arbol_tipo, [pokemon, pokemon.tipo])
+            arbol_numero = insertar_nodo(arbol_numero, [pokemon, pokemon.numero])

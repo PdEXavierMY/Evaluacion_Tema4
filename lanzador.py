@@ -89,3 +89,10 @@ def ejecutar():
         print('Todos los pokemon del tipo especificado son: ')
         print('')
         busqueda_proximidad_pokemon_tipo(arbol_tipo, tipo_pokemon.lower())
+
+        #apartado d
+        print('')
+        print('Listado en orden creciente numérico de pokemon:')
+        print('')
+        inorden_numero2(arbol_numero)
+        print('')

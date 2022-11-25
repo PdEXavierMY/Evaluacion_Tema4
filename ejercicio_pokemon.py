@@ -1,4 +1,5 @@
 from codigo_base.cola import *
+from codigo_base.archivo import *
 
 class Pokemon(object):
     def __init__(self, nombre, numero, tipo, debilidad):
@@ -15,11 +16,12 @@ def inorden_numero(raiz):
         inorden_numero(raiz.der)
 
 def busqueda_proximidad_pokemon(raiz, buscado):
-    if(raiz is not None):
-        if(raiz.info[1][0:len(buscado)] == buscado):
-            print(raiz.info[1])
+    if raiz is not None:
+        if raiz.info[0:len(buscado)] == buscado:
+            print('Se encontro:', raiz.info)
         busqueda_proximidad_pokemon(raiz.izq, buscado)
         busqueda_proximidad_pokemon(raiz.der, buscado)
+
 
 def busqueda_proximidad_pokemon_tipo(raiz, buscado):
     if(raiz is not None):
@@ -58,11 +60,10 @@ def busqueda_proximidad_pokemon_debilesa(raiz, buscado):
         busqueda_proximidad_pokemon_debilesa(raiz.izq, buscado)
         busqueda_proximidad_pokemon_debilesa(raiz.der, buscado)
 
-def inorden_tipo(raiz, contador):
-    if(raiz is not None):
-        if raiz.info[0].tipo == 'fuego':
-            contador += 1
-        inorden_tipo(raiz.izq, contador)
-        print(raiz.info[0].nombre, raiz.info[0].tipo)
-        inorden_tipo(raiz.der, contador)
-    return contador
+def inorden_tipo(raiz, archivo):
+    if raiz is not None:
+        inorden_tipo(raiz.izq, archivo)
+        pokemon = leer(archivo, raiz.nrr)
+        if pokemon.tipo.find('agua') > -1 or pokemon.tipo.find('fuego') > -1 or pokemon.tipo.find('planta') > -1 or pokemon.tipo.find('electrico') > -1:
+            print(raiz.info,'es de tipo', pokemon.tipo)
+        inorden_tipo(raiz.der, archivo)

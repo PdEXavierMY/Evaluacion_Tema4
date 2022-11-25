@@ -2,6 +2,7 @@ from ejercicio_Huffman import *
 from ejercicio_pokemon import *
 from codigo_base.arboles import *
 from codigo_base.grafos import *
+from codigo_base.archivo import *
 from random import choice, randint
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
 from introducir import solicitar_introducir_numero_extremo, solicitar_introducir_cadena
@@ -56,77 +57,83 @@ def ejecutar():
         print("Cadena decodificada: ", decodificar(cadena, bosque[0]))
     #ej2   
     elif ej == 2:
-        '''with open("Pokemon.csv", 'r') as f:
-            reader = csv.reader(f)
-            nombres = [row[1] for row in reader]
-        nombre = [choice(nombres) for i in range(20)]
-        tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
-        pokemondebil = ['Jolteon', 'Lycanroc', 'Tyrantum']+[choice(nombre) for i in range(5)]
-        debil = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']+pokemondebil'''
-        tipo = ['agua', 'fuego', 'tierra', 'electrico']
-        debil = ['agua', 'fuego', 'tierra', 'electrico', 'Jolteon', 'Lycanroc', 'Tyrantum']
-        nombre = ['Bulbasaur', 'Charmander', 'Pikachu', 'Ivysaur', 'Charmeleon', 'Charizard', 'Squirtle', 'wartortle', 'Venusaur']
+        pokemon_csv = [['Bulbasaur', 1, 'planta/veneno', 'fuego/psiquico'],
+         ['Bulivysaur', 2, 'planta/veneno', 'fuego/psiquico'], 
+         ['Charmander', 4, 'fuego', 'agua/tierra'],
+         ['Charizard', 6, 'fuego/volador', 'agua/electrico'], 
+         ['Squirtle', 7, 'agua', 'planta/electrico'], 
+         ['Butterfree', 12, 'bicho/volador', 'fuego/electrico/hielo'], 
+         ['Pidgeotto', 17, 'normal/volador', 'hielo/roca'], 
+         ['Rattata', 19, 'normal', 'lucha'], 
+         ['Weedle', 13, 'bicho/veneno', 'fuego/psiquico/volador'], 
+         ['Pikachu', 25, 'electrico', 'tierra'], 
+         ['Raichu', 26, 'electrico', 'tierra'], 
+         ['Meowth', 52, 'normal', 'lucha'],
+         ['Growlithe', 58, 'fuego', 'agua/roca'], 
+         ['Tentacool', 72, 'agua/veneno', 'psiquico/electrico'], 
+         ['Weepinbell', 70, 'planta/veneno', 'fuego/volador/hielo']] 
+        arbol = None
         arbol_nombres = None
         arbol_tipo = None
         arbol_numero = None
+        fichero = abrir('pokemon')
+        for pokemon in pokemon_csv:
+            x = Pokemon(pokemon[0], pokemon[1], pokemon[2], pokemon[3])
+            guardar(fichero, x)
+
         #apartado a
-        for i in range (0, len(nombre)):
-            pokemon = Pokemon(nombre[i], randint(1, 100), choice(tipo), choice(debil))
-            arbol_nombres = insertar_nodo_pokemon(arbol_nombres, [pokemon, pokemon.nombre])
-            arbol_tipo = insertar_nodo_pokemon(arbol_tipo, [pokemon, pokemon.tipo])
-            arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])
+        pos = 0
+        while pos < len(pokemon_csv):
+            poke = leer(fichero, pos)
+            arbol = insertar_nodo(arbol, [poke.nombre, poke.numero, poke.tipo, poke.debilidad], pos)
+            arbol_nombre = insertar_nodo(arbol_nombre, poke.nombre, pos)
+            arbol_numero = insertar_nodo(arbol_numero, poke.numero, pos)
+            arbol_tipo = insertar_nodo(arbol_tipo, poke.tipo, pos)
+            pos += 1
+        cerrar(fichero)
 
         #apartado b
-        print('Listado en orden de los pokemon por número:')
-        print('')
-        inorden_numero(arbol_numero)
         print('')
         nombre_pokemonabuscar = solicitar_introducir_cadena('Ingrese el nombre parcial o total del pokemon que quieres buscar')
         print('')
-        print('Todos los pokemon con ese string son: ')
+        busqueda_proximidad_pokemon(arbol_nombre, nombre_pokemonabuscar)
         print('')
-        busqueda_proximidad_pokemon(arbol_nombres, nombre_pokemonabuscar)
 
         #apartado c
-        tipo_pokemon = solicitar_introducir_cadena('Ingrese el tipo de los pokemon a buscar')
+        file = abrir('pokemon')
+        print('Pokemone de tipo agua, fuego, planta o electrico:')
         print('')
-        print('Todos los pokemon del tipo especificado son: ')
+        inorden_tipo(arbol_nombre, file)
         print('')
-        busqueda_proximidad_pokemon_tipo(arbol_tipo, tipo_pokemon.lower())
 
         #apartado d
+        print('Barrido pokemon por nombre:')
         print('')
-        print('Listado en orden creciente numérico de pokemon:')
+        inorden_pokemon_nombre(arbol_nombre, file)
         print('')
-        inorden_numero2(arbol_numero)
+        print('Barrido pokemon por numero:')
         print('')
-        print('Listado en orden creciente alfabético de pokemon:')
+        inorden_pokemon_numero(arbol_numero, file)
         print('')
-        inorden_nombre(arbol_nombres)
+        print('Barrido pokemon por nivel:')
         print('')
-        print('Listado en orden por nivel de pokemon:')
-        print('')
-        por_nivel_nombre(arbol_nombres)
+        por_nivel(arbol_nombre)
         print('')
 
         #apartado e
-        print('Los pokemon debiles contra Jolteon son: ')
-        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Jolteon')
+        debilidad = input('Ingrese tipo de debilidad: ')
         print('')
-        print('Los pokemon debiles contra Lycanroc son: ')
-        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Lycanroc')
+        inorden_debilidad(arbol_nombre, file, debilidad)
         print('')
-        print('Los pokemon debiles contra Tyrantrum son: ')
-        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Tyrantrum')
-        print('')
+        cerrar(file)
 
-        #apartado f
+        '''#apartado f
         contador = 0
         print('Listado de pokemon y su tipo:')
         print('')
         contador = inorden_tipo(arbol_nombres, contador)
         print('')
-        print('Cantidad del tipo fuego:',contador)
+        print('Cantidad del tipo fuego:',contador)'''
 
     elif ej == 3:
         g = Grafo(dirigido=False)

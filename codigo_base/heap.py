@@ -1,5 +1,4 @@
 class HeapMax():
-
     def __init__(self):
         self.vector = []
         self.tamanio = 0

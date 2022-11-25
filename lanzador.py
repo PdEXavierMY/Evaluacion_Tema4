@@ -73,7 +73,7 @@ def ejecutar():
          ['Tentacool', 72, 'agua/veneno', 'psiquico/electrico'], 
          ['Weepinbell', 70, 'planta/veneno', 'fuego/volador/hielo']] 
         arbol = None
-        arbol_nombres = None
+        arbol_nombre = None
         arbol_tipo = None
         arbol_numero = None
         fichero = abrir('pokemon')

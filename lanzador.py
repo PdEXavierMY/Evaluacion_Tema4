@@ -1,6 +1,7 @@
 from ejercicio_Huffman import *
 from ejercicio_pokemon import *
 from codigo_base.arboles import *
+from codigo_base.grafos import *
 from random import choice, randint
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
 from introducir import solicitar_introducir_numero_extremo, solicitar_introducir_cadena
@@ -126,3 +127,20 @@ def ejecutar():
         contador = inorden_tipo(arbol_nombres, contador)
         print('')
         print('Cantidad del tipo fuego:',contador)
+
+    elif ej == 3:
+        g = Grafo(dirigido=False)
+        # las maravillas naturales
+        g.insertar_vertice('T', datos={'tipo': 'a', 'pais': 'egipto'})
+        g.insertar_vertice('Z', datos={'tipo': 'a', 'pais': 'francia'})
+        g.insertar_vertice('F', datos={'tipo': 'a', 'pais': 'china'})
+        g.insertar_vertice('X', datos={'tipo': 'a', 'pais': 'india'})
+        g.insertar_vertice('R', datos={'tipo': 'a', 'pais': 'eeuu'})
+        g.insertar_vertice('K', datos={'tipo': 'a', 'pais': 'brasil'})
+        # las maravillas arquitectonicas
+        g.insertar_vertice('L', datos={'tipo': 'n', 'pais': 'argentina-brasil-paragauy'})
+        g.insertar_vertice('J', datos={'tipo': 'n', 'pais': 'indonesia'})
+        g.insertar_vertice('I', datos={'tipo': 'n', 'pais': 'sudafrica'})
+        g.insertar_vertice('M', datos={'tipo': 'n', 'pais': 'india'})
+        g.insertar_vertice('S', datos={'tipo': 'n', 'pais': 'china'})
+        g.insertar_vertice('Y', datos={'tipo': 'n', 'pais': 'brasil'})

@@ -1,5 +1,5 @@
 from codigo_base.cola import *
-from heapq import HeapMin, HeapMax
+from codigo_base.heap import *
 
 def criterio(dato, campo=None):
     dic = {}
@@ -317,4 +317,3 @@ class Grafo():
                     else:
                         bosque.append(origen+'-'+destino+f'-{arista[0]};{arista[1]};{peso}')
         return bosque
-

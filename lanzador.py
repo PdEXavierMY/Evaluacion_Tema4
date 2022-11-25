@@ -104,3 +104,14 @@ def ejecutar():
         print('')
         por_nivel_nombre(arbol_nombres)
         print('')
+
+        #apartado e
+        print('Los pokemon debiles contra Jolteon son: ')
+        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Jolteon')
+        print('')
+        print('Los pokemon debiles contra Lycanroc son: ')
+        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Lycanroc')
+        print('')
+        print('Los pokemon debiles contra Tyrantrum son: ')
+        busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Tyrantrum')
+        print('')

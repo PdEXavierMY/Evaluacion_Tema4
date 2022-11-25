@@ -50,3 +50,10 @@ def por_nivel_nombre(raiz):
                     arribo(cola, nodo.izq)
                 if(nodo.der is not None):
                     arribo(cola, nodo.der)
+
+def busqueda_proximidad_pokemon_debilesa(raiz, buscado):
+            if(raiz is not None):
+                if(raiz.info[0].debilidad[0:len(buscado)] == buscado):
+                    print(raiz.info[0].nombre)
+                busqueda_proximidad_pokemon_debilesa(raiz.izq, buscado)
+                busqueda_proximidad_pokemon_debilesa(raiz.der, buscado)

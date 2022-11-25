@@ -49,3 +49,9 @@ def decodificar(cadena, huffman):
             raiz_aux = huffman
         cadena_i
     return cadena_i
+
+def codificar(cadena, dic):
+    cadena_cod = ''
+    for split in cadena:
+        cadena_cod += dic[split]
+    return cadena_cod

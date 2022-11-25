@@ -58,7 +58,7 @@ def ejecutar():
     #ej2   
     elif ej == 2:
         pokemon_csv = [['Bulbasaur', 1, 'planta/veneno', 'fuego/psiquico'],
-         ['Bulivysaur', 2, 'planta/veneno', 'fuego/psiquico'], 
+         ['BulIvysaur', 2, 'planta/veneno', 'fuego/psiquico'], 
          ['Charmander', 4, 'fuego', 'agua/tierra'],
          ['Charizard', 6, 'fuego/volador', 'agua/electrico'], 
          ['Squirtle', 7, 'agua', 'planta/electrico'], 
@@ -84,11 +84,11 @@ def ejecutar():
         #apartado a
         pos = 0
         while pos < len(pokemon_csv):
-            poke = leer(fichero, pos)
-            arbol = insertar_nodo(arbol, [poke.nombre, poke.numero, poke.tipo, poke.debilidad], pos)
-            arbol_nombre = insertar_nodo(arbol_nombre, poke.nombre, pos)
-            arbol_numero = insertar_nodo(arbol_numero, poke.numero, pos)
-            arbol_tipo = insertar_nodo(arbol_tipo, poke.tipo, pos)
+            pokemon = leer(fichero, pos)
+            arbol = insertar_nodo(arbol, [pokemon.nombre, pokemon.numero, pokemon.tipo, pokemon.debilidad], pos)
+            arbol_nombre = insertar_nodo(arbol_nombre, pokemon.nombre, pos)
+            arbol_numero = insertar_nodo(arbol_numero, pokemon.numero, pos)
+            arbol_tipo = insertar_nodo(arbol_tipo, pokemon.tipo, pos)
             pos += 1
         cerrar(fichero)
 

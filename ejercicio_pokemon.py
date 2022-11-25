@@ -57,3 +57,12 @@ def busqueda_proximidad_pokemon_debilesa(raiz, buscado):
                     print(raiz.info[0].nombre)
                 busqueda_proximidad_pokemon_debilesa(raiz.izq, buscado)
                 busqueda_proximidad_pokemon_debilesa(raiz.der, buscado)
+
+def inorden_tipo(raiz, contador):
+            if(raiz is not None):
+                if raiz.info[0].tipo == 'fuego':
+                    contador += 1
+                inorden_tipo(raiz.izq, contador)
+                print(raiz.info[0].nombre, raiz.info[0].tipo)
+                inorden_tipo(raiz.der, contador)
+            return contador

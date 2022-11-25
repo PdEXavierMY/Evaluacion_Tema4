@@ -115,3 +115,11 @@ def ejecutar():
         print('Los pokemon debiles contra Tyrantrum son: ')
         busqueda_proximidad_pokemon_debilesa(arbol_nombres, 'Tyrantrum')
         print('')
+
+        #apartado f
+        contador = 0
+        print('Listado de pokemon y su tipo:')
+        print('')
+        contador = inorden_tipo(arbol_nombres, contador)
+        print('')
+        print('Cantidad del tipo fuego:',contador)

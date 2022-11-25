@@ -8,6 +8,7 @@ bosque = []
 for elemento in tabla:
     nodo = ArbolHuffman(elemento[0], elemento[1])
     bosque.append(nodo)
+#probar a ver la tabla ordenada
 for elemento in bosque:
     print(elemento.info, elemento.valor)
 while(len(bosque) > 1):
@@ -17,4 +18,6 @@ while(len(bosque) > 1):
     nodo.izq = elemento1
     nodo.der = elemento2
     bosque.append(nodo)
-    bosque = ordenar_tabla_por_probabilidad(bosque)
+    bosque = ordenar_nodo_por_probabilidad(bosque)
+for elemento in bosque:
+    print(elemento.info, elemento.valor)

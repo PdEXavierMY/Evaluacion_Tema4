@@ -82,3 +82,10 @@ def ejecutar():
         print('Todos los pokemon con ese string son: ')
         print('')
         busqueda_proximidad_pokemon(arbol_nombres, nombre_pokemonabuscar)
+
+        #apartado c
+        tipo_pokemon = solicitar_introducir_cadena('Ingrese el tipo de los pokemon a buscar')
+        print('')
+        print('Todos los pokemon del tipo especificado son: ')
+        print('')
+        busqueda_proximidad_pokemon_tipo(arbol_tipo, tipo_pokemon.lower())

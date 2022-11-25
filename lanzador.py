@@ -96,3 +96,7 @@ def ejecutar():
         print('')
         inorden_numero2(arbol_numero)
         print('')
+        print('Listado en orden creciente alfabético de pokemon:')
+        print('')
+        inorden_nombre(arbol_nombres)
+        print('')

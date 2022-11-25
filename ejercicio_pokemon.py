@@ -31,3 +31,9 @@ def inorden_numero2(raiz):
                 inorden_numero2(raiz.izq)
                 print(raiz.info[0])
                 inorden_numero2(raiz.der)
+
+def inorden_nombre(raiz):
+            if(raiz is not None):
+                inorden_nombre(raiz.izq)
+                print(raiz.info[0])
+                inorden_nombre(raiz.der)

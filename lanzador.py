@@ -55,19 +55,22 @@ def ejecutar():
         print("Cadena decodificada: ", decodificar(cadena, bosque[0]))
     #ej2   
     elif ej == 2:
-        with open("Pokemon.csv", 'r') as f:
+        '''with open("Pokemon.csv", 'r') as f:
             reader = csv.reader(f)
             nombres = [row[1] for row in reader]
         nombre = [choice(nombres) for i in range(20)]
         tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
         pokemondebil = ['Jolteon', 'Lycanroc', 'Tyrantum']+[choice(nombre) for i in range(5)]
-        debil = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']+pokemondebil
+        debil = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']+pokemondebil'''
+        tipo = ['agua', 'fuego', 'tierra', 'electrico']
+        debil = ['agua', 'fuego', 'tierra', 'electrico', 'Jolteon', 'Lycanroc', 'Tyrantum']
+        nombre = ['Bulbasaur', 'Charmander', 'Pikachu', 'Ivysaur', 'Charmeleon', 'Charizard', 'Squirtle', 'wartortle', 'Venusaur']
         arbol_nombres = None
         arbol_tipo = None
         arbol_numero = None
         #apartado a
         for i in range (0, len(nombre)):
-            pokemon = Pokemon(nombre[i], randint(1, 900), choice(tipo), choice(debil))
+            pokemon = Pokemon(nombre[i], randint(1, 100), choice(tipo), choice(debil))
             arbol_nombres = insertar_nodo_pokemon(arbol_nombres, [pokemon, pokemon.nombre])
             arbol_tipo = insertar_nodo_pokemon(arbol_tipo, [pokemon, pokemon.tipo])
             arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])

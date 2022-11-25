@@ -100,3 +100,7 @@ def ejecutar():
         print('')
         inorden_nombre(arbol_nombres)
         print('')
+        print('Listado en orden por nivel de pokemon:')
+        print('')
+        por_nivel_nombre(arbol_nombres)
+        print('')

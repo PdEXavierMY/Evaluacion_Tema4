@@ -1,3 +1,5 @@
+from codigo_base.cola import *
+
 class Pokemon(object):
     def __init__(self, nombre, numero, tipo, debilidad):
         self.nombre = nombre
@@ -37,3 +39,14 @@ def inorden_nombre(raiz):
                 inorden_nombre(raiz.izq)
                 print(raiz.info[0])
                 inorden_nombre(raiz.der)
+
+def por_nivel_nombre(raiz):
+            cola = Cola()
+            arribo(cola, raiz)
+            while(not cola_vacia(cola)):
+                nodo = atencion(cola)
+                print(nodo.info[0])
+                if(nodo.izq is not None):
+                    arribo(cola, nodo.izq)
+                if(nodo.der is not None):
+                    arribo(cola, nodo.der)

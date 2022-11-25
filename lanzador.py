@@ -163,18 +163,26 @@ def ejecutar():
 
 
         paises = g.contar_maravillas()
+        print('Los paises con una maravilla y su tipo son los siguientes:')
+        print('')
         for pais in paises:
             print(pais, paises[pais])
 
         arbol_min = g.kruskal()
         arbol_min = arbol_min[0].split('-')
         peso_total = 0
+        print('')
+        print('El arbol minimo es el siguiente:')
+        print('')
         for nodo in arbol_min:
             nodo = nodo.split(';')
             peso_total += int(nodo[2])
             print(f'{nodo[0]}-{nodo[1]}-{nodo[2]}')
-        print(f"el peso total es {peso_total}")
-
+        print('')
+        print(f"El peso total del recorrido es {peso_total}")
+        print('')
+        print('Vamos a probar a encontrar un camino de T a Z.')
+        print('')
         if g.existe_paso('T', 'Z'):
             resultados1 = g.dijkstra('T')
             camino = g.camino(resultados1, 'T', 'Z')
@@ -183,14 +191,3 @@ def ejecutar():
             print('no se puede llega de T a Z')
             g.eliminar_arista('A', 'C')
             g.eliminar_vertice('C')
-
-        g.barrido_profundidad('K')
-        print('')
-        g.barrido_profundidad('T')
-        print('------------------------------------------')
-        g.barrido_profundidad('L')
-        print('')
-        g.barrido_no_visitado()
-        g.adyacentes('A')
-        print(g.es_adyacente('A', 'F'))
-        print(g.es_adyacente('Z', 'A'))

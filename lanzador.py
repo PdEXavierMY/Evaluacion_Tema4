@@ -71,4 +71,8 @@ def ejecutar():
             arbol_nombres = insertar_nodo_pokemon(arbol_nombres, [pokemon, pokemon.nombre])
             arbol_tipo = insertar_nodo_pokemon(arbol_tipo, [pokemon, pokemon.tipo])
             arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])
-ejecutar()
+
+        #apartado b
+        print('Listado en orden por número:')
+        print('')
+        inorden_numero(arbol_numero)

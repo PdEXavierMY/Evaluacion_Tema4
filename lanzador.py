@@ -1,7 +1,7 @@
 from ejercicio_Huffman import *
 from ejercicio_pokemon import *
 from codigo_base.arboles import *
-from random import choice
+from random import choice, randint
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
 from introducir import solicitar_introducir_numero_extremo
 import csv
@@ -57,17 +57,17 @@ def ejecutar():
     elif ej == 2:
         with open("Pokemon.csv", 'r') as f:
             reader = csv.reader(f)
-            nombre = [row[1] for row in reader]
+            nombres = [row[1] for row in reader]
+        nombre = [choice(nombres) for i in range(20)]
         tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
-        pokemondebil = ['Jolteon', 'Lycanroc', 'Tyrantum']+[choice(nombre) for i in range(100)]
+        pokemondebil = ['Jolteon', 'Lycanroc', 'Tyrantum']+[choice(nombre) for i in range(5)]
         debil = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']+pokemondebil
-        id = [i+1 for i in range(1, len(nombre))]
         arbol_nombres = None
         arbol_tipo = None
         arbol_numero = None
         #apartado a
         for i in range (0, len(nombre)):
-            pokemon = Pokemon(nombre[i], id[i], choice(tipo), choice(debil))
+            pokemon = Pokemon(nombre[i], randint(1, 900), choice(tipo), choice(debil))
             arbol_nombres = insertar_nodo_pokemon(arbol_nombres, [pokemon, pokemon.nombre])
             arbol_tipo = insertar_nodo_pokemon(arbol_tipo, [pokemon, pokemon.tipo])
             arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])

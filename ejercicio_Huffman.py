@@ -22,3 +22,14 @@ def ordenar_nodo_por_probabilidad(lista):
         tabla_ordenada.append(lista[posicion])
         lista.pop(posicion)
     return tabla_ordenada
+
+def generar_Huffman(raiz, cadena=''):
+    if(raiz is not None):
+        if(raiz.izq is None):
+            print(raiz.info, cadena)
+        else:
+            cadena += '0'
+            generar_Huffman(raiz.izq, cadena)
+            cadena = cadena[0:-1]
+            cadena += '1'
+            generar_Huffman(raiz.der, cadena)

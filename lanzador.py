@@ -19,5 +19,4 @@ while(len(bosque) > 1):
     nodo.der = elemento2
     bosque.append(nodo)
     bosque = ordenar_nodo_por_probabilidad(bosque)
-for elemento in bosque:
-    print(elemento.info, elemento.valor)
+generar_Huffman(bosque[0])

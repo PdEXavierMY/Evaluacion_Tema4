@@ -6,7 +6,6 @@ from codigo_base.archivo import *
 from random import choice, randint
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
 from introducir import solicitar_introducir_numero_extremo, solicitar_introducir_cadena
-import csv
 
 def ejecutar():
     #ej1

@@ -160,3 +160,17 @@ def ejecutar():
         g.insertar_arista('R', 'Z', 4)
         g.insertar_arista('K', 'Z', 3)
         g.insertar_arista('R', 'X', 5)
+
+
+        paises = g.contar_maravillas()
+        for pais in paises:
+            print(pais, paises[pais])
+
+        arbol_min = g.kruskal()
+        arbol_min = arbol_min[0].split('-')
+        peso_total = 0
+        for nodo in arbol_min:
+            nodo = nodo.split(';')
+            peso_total += int(nodo[2])
+            print(f'{nodo[0]}-{nodo[1]}-{nodo[2]}')
+        print(f"el peso total es {peso_total}")

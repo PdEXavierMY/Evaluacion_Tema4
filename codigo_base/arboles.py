@@ -1,4 +1,4 @@
-from cola import *
+from codigo_base.cola import *
 
 class nodoArbol(object):
     def __init__(self, info, nodo_raiz=None):

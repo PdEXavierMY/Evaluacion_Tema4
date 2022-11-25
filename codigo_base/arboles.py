@@ -17,6 +17,15 @@ class ArbolBinario(object):
         self.descripcion = descipcion
 
 
+class nodoArbolHuffman(object):
+    
+    def __init__(self, info, valor):
+        self.izq = None
+        self.der = None
+        self.info = info
+        self.valor = valor
+        
+
 def insertar_nodo(raiz, dato, nodo_raiz=None):
     if(raiz is None):
         raiz = nodoArbol(dato, nodo_raiz)

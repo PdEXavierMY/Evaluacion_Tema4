@@ -1,5 +1,5 @@
 from ejercicio_Huffman import *
-from ejercicio_pokemon import Pokemon
+from ejercicio_pokemon import *
 from codigo_base.arboles import *
 from random import choice
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
@@ -55,19 +55,20 @@ def ejecutar():
         print("Cadena decodificada: ", decodificar(cadena, bosque[0]))
     #ej2   
     elif ej == 2:
-        with open("Pokemon.csv", 'rb') as f:
+        with open("Pokemon.csv", 'r') as f:
             reader = csv.reader(f)
             nombre = [row[1] for row in reader]
-            id = [row[0] for row in reader]
+        tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
+        pokemondebil = ['Jolteon', 'Lycanroc', 'Tyrantum']+[choice(nombre) for i in range(100)]
+        debil = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']+pokemondebil
+        id = [i+1 for i in range(1, len(nombre))]
         arbol_nombres = None
         arbol_tipo = None
         arbol_numero = None
-        tipo = ['agua', 'fuego', 'tierra', 'electrico', 'acero', 'hada', 'fantasma', 'volador', 'dragon', 'veneno', 'bicho', 'planta', 'roca', 'normal', 'lucha', 'psiquico', 'siniestro', 'hielo']
-        debil = []
-
         #apartado a
         for i in range (0, len(nombre)):
             pokemon = Pokemon(nombre[i], id[i], choice(tipo), choice(debil))
-            arbol_nombres = insertar_nodo(arbol_nombres, [pokemon, pokemon.nombre])
-            arbol_tipo = insertar_nodo(arbol_tipo, [pokemon, pokemon.tipo])
-            arbol_numero = insertar_nodo(arbol_numero, [pokemon, pokemon.numero])
+            arbol_nombres = insertar_nodo_pokemon(arbol_nombres, [pokemon, pokemon.nombre])
+            arbol_tipo = insertar_nodo_pokemon(arbol_tipo, [pokemon, pokemon.tipo])
+            arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])
+ejecutar()

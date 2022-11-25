@@ -34,6 +34,67 @@ def insertar_nodo(raiz, dato, nodo_raiz=None):
         raiz.der = insertar_nodo(raiz.der, dato, nodo_raiz)
     return raiz
 
+def altura(raiz):
+    if(raiz is None):
+        return -1
+    else:
+        return raiz.altura
+
+def actualizar_altura(raiz):
+    if(raiz is not None):
+        altura_i = altura(raiz.izq)
+        altura_d = altura(raiz.der)
+        raiz.altura = (altura_i if altura_i > altura_d else altura_d) + 1
+
+def balancear(raiz):
+    if(raiz is not None):
+        if(altura(raiz.izq)-altura(raiz.der) == 2):
+            if(altura(raiz.izq.izq) >= altura(raiz.izq.der)):
+                raiz = rotar_simple(raiz, True)
+            else:
+                raiz = rotar_doble(raiz, True)
+        elif(altura(raiz.der)-altura(raiz.izq) == 2):
+            if(altura(raiz.der.der) >= altura(raiz.der.izq)):
+                raiz = rotar_simple(raiz, False)
+            else:
+                raiz = rotar_doble(raiz, False)
+    return
+
+def rotar_simple(raiz, control):
+    if control:
+        aux = raiz.izq
+        raiz.izq = aux.der
+        aux.der = raiz
+    else:
+        aux = raiz.der
+        raiz.der = aux.izq
+        aux.izq = raiz
+    actualizar_altura(raiz)
+    actualizar_altura(aux)
+    raiz = aux
+    return raiz
+
+def rotar_doble(raiz, control):
+    if control:
+        raiz.izq = rotar_simple(raiz.izq, False)
+        raiz = rotar_simple(raiz, True)
+    else:
+        raiz.der = rotar_simple(raiz.der, True)
+        raiz = rotar_simple(raiz, False)
+    return raiz
+
+def insertar_nodo_pokemon(raiz, dato, nodo_raiz=None):
+    if(raiz is None):
+        raiz = nodoArbol(dato, nodo_raiz)
+    else:
+        if(raiz.info[1] > dato[1]):
+            raiz.izq = insertar_nodo(raiz.izq, dato, nodo_raiz)
+        else:
+            raiz.der = insertar_nodo(raiz.der, dato, nodo_raiz)
+    raiz = balancear(raiz)
+    actualizar_altura(raiz)
+    return raiz
+
 def inorden(raiz):
     if(raiz is not None):
         inorden(raiz.izq)

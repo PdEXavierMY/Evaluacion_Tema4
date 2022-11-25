@@ -3,7 +3,7 @@ from ejercicio_pokemon import *
 from codigo_base.arboles import *
 from random import choice, randint
 from codigo_base.cola import Cola, arribo, atencion, cola_vacia
-from introducir import solicitar_introducir_numero_extremo
+from introducir import solicitar_introducir_numero_extremo, solicitar_introducir_cadena
 import csv
 
 def ejecutar():
@@ -73,6 +73,12 @@ def ejecutar():
             arbol_numero = insertar_nodo_pokemon(arbol_numero, [pokemon, pokemon.numero])
 
         #apartado b
-        print('Listado en orden por número:')
+        print('Listado en orden de los pokemon por número:')
         print('')
         inorden_numero(arbol_numero)
+        print('')
+        nombre_pokemonabuscar = solicitar_introducir_cadena('Ingrese el nombre parcial o total del pokemon que quieres buscar')
+        print('')
+        print('Todos los pokemon con ese string son: ')
+        print('')
+        busqueda_proximidad_pokemon(arbol_nombres, nombre_pokemonabuscar)

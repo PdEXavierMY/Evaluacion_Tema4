@@ -317,3 +317,31 @@ class Grafo():
                     else:
                         bosque.append(origen+'-'+destino+f'-{arista[0]};{arista[1]};{peso}')
         return bosque
+
+    def camino(self, resultados, origen, destino):
+            camino_mas_corto = {'camino': [],
+                                'costo': None}
+            if destino in resultados:
+                vert_destino = resultados[destino]
+                camino_mas_corto['costo'] = vert_destino['peso']
+                camino_mas_corto['camino'].append(destino)
+                while vert_destino['previo'] is not None:
+                    camino_mas_corto['camino'].append(vert_destino['previo'])
+                    vert_destino = resultados[vert_destino['previo']]
+                camino_mas_corto['camino'].reverse()
+            return camino_mas_corto
+
+    def contar_maravillas(self):
+        paises = {}
+        aux = self.__inicio
+        while aux is not None:
+            if aux.datos['pais'] not in paises:
+                print('-')
+                paises[aux.datos['pais']] = {'arq': False, 'nat': False}
+
+            if aux.datos['tipo'] == 'n':
+                paises[aux.datos['pais']]['nat'] = True
+            else:
+                paises[aux.datos['pais']]['arq'] = True
+            aux = aux.sig
+        return paises

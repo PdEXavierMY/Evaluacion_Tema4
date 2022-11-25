@@ -47,7 +47,6 @@ def decodificar(cadena, huffman):
         if(raiz_aux.izq is None):
             cadena_i += raiz_aux.info
             raiz_aux = huffman
-        cadena_i
     return cadena_i
 
 def codificar(cadena, dic):

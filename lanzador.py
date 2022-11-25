@@ -174,3 +174,12 @@ def ejecutar():
             peso_total += int(nodo[2])
             print(f'{nodo[0]}-{nodo[1]}-{nodo[2]}')
         print(f"el peso total es {peso_total}")
+
+        if g.existe_paso('T', 'Z'):
+            resultados1 = g.dijkstra('T')
+            camino = g.camino(resultados1, 'T', 'Z')
+            print(camino)
+        else:
+            print('no se puede llega de T a Z')
+            g.eliminar_arista('A', 'C')
+            g.eliminar_vertice('C')

@@ -87,7 +87,7 @@ def insertar_nodo_pokemon(raiz, dato, nodo_raiz=None):
     if(raiz is None):
         raiz = nodoArbol(dato, nodo_raiz)
     else:
-        if(raiz.info[1] > dato[1]):
+        if(raiz.info > dato):
             raiz.izq = insertar_nodo(raiz.izq, dato, nodo_raiz)
         else:
             raiz.der = insertar_nodo(raiz.der, dato, nodo_raiz)
